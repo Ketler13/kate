@@ -74,7 +74,7 @@
       }
 
       function getInner(val, holes) {
-        return ((val - 8) / (holes - 1)) + 4;
+        return ((val - 80) / (holes - 1)) + 40;
       }
 
       function toCM(val) {
@@ -100,6 +100,7 @@
           result = `Всего три, середина ${toCM(middle)}`;
         } else if (length >= 794 && length <= 1293) {
           const inner = getInner(length, 4);
+          console.log(inner);
           result = `Всего четыре, два по ${toCM(inner)}`;
         } else {
           const middle = getMiddle(length);
