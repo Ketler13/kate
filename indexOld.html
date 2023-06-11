@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ancor</title>
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .drill-calculator {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+      }
+
+      .drill-controls {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #drill-input {
+        width: 100px;
+        font-size: 20px;
+      }
+
+      #drill-button {
+        margin-left: 10px;
+        background-color: blueviolet;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="drill-calculator">
+      <p>Длина (см)</p>
+      <p class="drill-controls">
+        <input type="number" id="drill-input" min="0" step="0.1" value="0" />
+        <button type="button" id="drill-button">Cчитать</button>
+      </p>
+      <p id="drill-result"></p>
+    </div>
+    <script>
+      const drillButton = document.getElementById('drill-button');
+      const drillInput = document.getElementById('drill-input');
+      const drillResult = document.getElementById('drill-result');
+
+      function getValue() {
+        const rawValue = drillInput.value;
+        return parseFloat(rawValue);
+      }
+
+      function insertResult(result) {
+        drillResult.innerText = result;
+      }
+
+      function getMiddle(val) {
+        return val / 2;
+      }
+
+      function getInner(val, holes) {
+        return ((val - 80) / (holes - 1)) + 40;
+      }
+
+      function toCM(val) {
+        return (val / 10).toFixed(3);
+      }
+
+      function calculateDrill() {
+        const length = getValue() * 10;
+
+        if (isNaN(length) || length < 0) {
+          alert('Только числа больше 0!');
+          return;
+        }
+
+        let result = '';
+
+        if (length <= 193) {
+          result = 'Слишком короткий =(';
+        } else if (length >= 194 && length <= 393) {
+          result = 'Всего два';
+        } else if (length >= 394 && length <= 793) {
+          const middle = getMiddle(length);
+          result = `Всего три, середина ${toCM(middle)}`;
+        } else if (length >= 794 && length <= 1293) {
+          const inner = getInner(length, 4);
+          console.log(inner);
+          result = `Всего четыре, два по ${toCM(inner)}`;
+        } else {
+          const middle = getMiddle(length);
+          const inner = getInner(length, 5);
+          result = `Всего пять, середина ${toCM(middle)}, два по ${toCM(inner)}`;
+        }
+        
+        insertResult(result);
+      }
+
+      drillButton.addEventListener('click', calculateDrill);
+    </script>
+  </body>
+</html>

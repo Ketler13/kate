@@ -1,0 +1,43 @@
+{
+  "titles": {
+    "signIn": "Вход",
+    "signUp": "Регистрация",
+    "dashboard": "Главная",
+    "orders": "Заказы",
+    "createOrder": "Новый заказ"
+  },
+  "actions": {
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться",
+    "signOut": "Выйти",
+    "delete": "Удалить"
+  },
+  "signUp": {
+    "signInLink": "Есть аккаунт? Войти"
+  },
+  "signIn": {
+    "signUpLink": "Нет аккаунта? Зарегистрироваться"
+  },
+  "commonInputs": {
+    "email": "Электронная почта",
+    "password": "Пароль"
+  },
+  "order": {
+    "create": "Создать",
+    "customer": "Заказчик",
+    "createdAt": "Создано",
+    "dueTo": "Дедлайн",
+    "status": "Статус",
+    "notes": "Заметки",
+    "statuses": {
+      "created": "Создано",
+      "preparation": "Подготовка",
+      "pending": "Ожидание",
+      "inprogress": "В работе",
+      "done": "Готово"
+    }
+  },
+  "orders": {
+    "viewDetails": "Детали"
+  }
+}
